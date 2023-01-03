@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController {
+class RepositoryListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
