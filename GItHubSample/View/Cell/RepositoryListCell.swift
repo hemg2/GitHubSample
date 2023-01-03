@@ -21,15 +21,17 @@ final class RepositoryListCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        [nameLabel, descriptionLabel, starImageView, starLabel, languageLabel].forEach {
+        [
+            nameLabel, descriptionLabel,
+            starImageView, starLabel, languageLabel
+        ].forEach {
             contentView.addSubview($0)
         }
         
-        
         guard let repository = repository else { return }
+        
         nameLabel.text = repository.name
         nameLabel.font = .systemFont(ofSize: 15, weight: .bold)
-        
         
         descriptionLabel.text = repository.description
         descriptionLabel.font = .systemFont(ofSize: 15)
@@ -49,13 +51,17 @@ final class RepositoryListCell: UITableViewCell {
             $0.top.leading.trailing.equalToSuperview().inset(18)
         }
         
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).offset(3)
+            $0.leading.trailing.equalTo(nameLabel)
+        }
+        
         starImageView.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(8)
             $0.leading.equalTo(descriptionLabel)
             $0.width.height.equalTo(20)
             $0.bottom.equalToSuperview().inset(18)
         }
-        
         
         starLabel.snp.makeConstraints {
             $0.centerY.equalTo(starImageView)
